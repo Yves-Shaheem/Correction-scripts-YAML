@@ -1,1 +1,0 @@
-Bonjou, ceci est un test de script YAML
