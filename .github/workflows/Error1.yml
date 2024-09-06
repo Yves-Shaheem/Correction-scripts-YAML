@@ -11,10 +11,12 @@ on:
           description: "The base os"
           type: string
           required: true
+          default: "git"
         surname:
-          description: "Toto"
+          description: "Surname"
           type: string
           required: true
+          default: "Toto"
           
 
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -28,10 +30,10 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-     runs-on: ${{ inputs.os }}
+     runs-on: ${{ inputs.os || 'ubuntu-latest' }}
      steps:
       - uses: actions/checkout@v4
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Hello, ${{ inputs.surname }}!
+        run: echo Hello, ${{ inputs.surname || 'John' }}!
